@@ -1,0 +1,372 @@
+		/*Inluding the font files needed for the template*/
+		
+		@font-face {
+			font-family: mtSRegular;
+			src: url(./fonts/mtSRegular.otf);
+		}
+
+		@font-face {
+			font-family: mtSLight;
+			src: url(./fonts/mtSLight.otf);
+		}
+
+		@font-face {
+			font-family: mtSHairline;
+			src: url(./fonts/mtSHairline.otf);
+		}
+
+		@font-face {
+			font-family: mtSSemiBold;
+			src: url(./fonts/mtSSemiBold.otf);
+		}
+
+		@font-face {
+			font-family: mtSUltraLight;
+			src: url(./fonts/mtSUltraLight.otf);
+		}
+
+
+
+		/* 
+			General Classes
+			-> This section contains classes used in more than one section in the file. Also contains global parameters for specific elements.
+		*/
+
+		body, h1, 
+		h2, p {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+
+		.green {
+			background-color: #72F5AA;
+		}
+
+		::-webkit-input-placeholder { color: white; text-align: left; font-family: mtSLight; }
+		:-moz-placeholder { color: white; text-align: left; font-family: mtSLight;}
+		::-moz-placeholder { color: white; text-align: left; font-family: mtSLight;}
+		:-ms-input-placeholder { color: white; text-align: left; font-family: mtSLight;}
+
+		
+
+		
+		/* 
+			header div [1]
+			-> This section contents the menu and the ITC logo.
+		*/
+
+		#header {
+			background-color: #191918;
+		}
+
+		#header .headerLogo {
+			width: 10%;
+			height: auto;
+			margin: 1% auto;
+		}
+
+		#header ul {
+			width: 35%;
+			height: auto;
+			float: right;
+			margin: 3% 12% 2% 12%;
+		}
+
+		#header li {
+			display: inline;
+			padding: 7px 12px;
+			font-family: mtSRegular;
+			font-size: 13pt;
+		}
+
+		#header a {
+			text-decoration: none;
+			color: white;
+		}
+
+
+
+		/*
+			mainImage div [2]
+			-> This section contains the principal image of the page and the name of the program!
+		*/
+
+		#mainImage {
+			background: url(./images/top_pic.jpg) no-repeat; 
+  			background-size: cover;
+  			width: 100%;
+  			height: 993px;
+  			display: table;
+		}
+
+		#mainImage .textBox {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		#mainImage .text {
+			font-family: mtSRegular;
+			margin: -10px;
+		}
+
+		#mainImage .one {
+			color: #FFFFFF;
+			font-size: 20pt;
+		}
+
+		#mainImage .two {
+			color: #72F5AA;
+			font-size: 73pt;
+		}
+
+		#mainImage .three {
+			color: #72F5AA;
+			font-size: 24pt;
+		}
+
+
+
+		/* 
+			details div [3]
+			-> This section contains a little description about the program!
+		*/
+
+		#details {
+			background-color: #72F5AA;
+			height: auto;
+		}
+
+		#details ul {
+			width: 80%;
+			margin: 0 auto;
+			padding: 4%;
+		}
+
+		#details li {
+			width: 20%;
+			margin: 0 20px;
+			display: inline-block;
+			vertical-align: top;
+			color: #162524;
+		}
+
+		#details h1 {
+			font-family: mtSLight;
+			font-size: 18pt;
+			text-align: left;
+			margin-bottom: 15px;
+		}
+
+		#details p {
+			font-family: mtSHairline;
+			font-size: 12pt;
+			text-align: left;
+		}
+
+
+
+		/* 
+			highlights div [4]
+			-> This section contains the summary of the program in numbers.
+		*/
+
+		#highlights {
+			background: url(./images/icons_bg.jpg) no-repeat; 
+  			background-size: cover;
+  			width: 100%;
+  			height: 409px;
+  			display: table;
+  		}
+
+		#highlights ul {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		#highlights li {
+			display: inline-block;
+			vertical-align: top;
+			width: 17%;
+			color: #1CACE2;
+		}
+
+		#highlights h1 {
+			font-family: mtSLight;
+			font-size: 55pt;
+			margin-bottom: 10px;
+		}
+
+		#highlights p {
+			font-family: mtSLight;
+			font-size: 11pt;
+		}
+
+
+
+		/* 
+			weeksSyllabus div [5]
+			-> This section contains the weekly Syllabus of the program.
+		*/
+
+		#weeksSyllabus {
+			background-color: #1CACE2;
+			color: white;
+		}
+
+		#weeksSyllabus h1 {
+			font-family: mtSSemiBold;
+			font-size: 13pt;
+			padding: 35px 0;
+		}
+
+		#weeksSyllabus h2 {
+			font-family: mtSLight;
+			font-size: 28pt;
+			color: #72F5AA;
+			display: inline-block;
+		}
+
+		#weeksSyllabus .subtitle {
+			font-family: mtSSemiBold;
+			display: inline-block;
+			font-size: 10pt;
+		}
+
+		#weeksSyllabus p {
+			font-family: mtSLight;
+			display: inline-block;
+			font-size: 10pt;
+			text-align: left;
+			padding: 10px;
+		}
+
+		#weeksSyllabus ul {
+			width: 50%;
+			margin: 0 auto;
+			padding-bottom: 50px;
+			list-style: none;
+		}
+
+		#weeksSyllabus li {
+			text-align: left;
+			padding: 5px 10px;
+			margin: 1px;
+		}
+
+		#weeksSyllabus li.one {
+			width: 25%;
+			background-color: #4AC0EC;
+		}
+
+		#weeksSyllabus li.two {
+			width: 40%;
+			background-color: #55C2E9;
+		}
+
+		#weeksSyllabus li.three {
+			width: 50%;
+			background-color: #61C2E7;
+		}
+
+		#weeksSyllabus li.four {
+			width: 70%;
+			background-color: #77D0F1;
+		}
+
+		#weeksSyllabus li.five {
+			width: 85%;
+			background-color: #82CEEB;
+		}
+
+		#weeksSyllabus li.six {
+			width: 100%;
+			background-color: #8ED6F1;
+		}
+
+
+
+		/* 
+			media div [6]
+			-> This section contains media about previous programs and ITC.
+		*/
+
+		#media {
+			width: 80%;
+			margin: 50px auto;
+		}
+
+		#media h1 {
+			margin: 5% auto 3% auto;
+			font-family: mtSSemiBold;
+			font-size: 13pt;
+		}
+
+		#media img {
+			width: 20%;
+			height: auto;
+		}
+
+		
+		
+		/* 
+			footer div [6]
+			-> This section contains the footer of the page.
+		*/
+
+		#footer {
+			background-color: rgb(43, 42, 42);
+		}
+
+		#footer h1 {
+			margin: 5% auto 2% auto;
+			padding: 30px 0 10px 0;
+			font-family: mtSSemiBold;
+			font-size: 21pt;
+			color: #72F5AA;
+		}
+
+		#footer ul {
+			width: 70%;
+			margin: 0 auto;
+			padding-bottom: 50px;
+			text-decoration: none;
+		}
+
+		#footer li {
+			display: inline-block;
+			padding: 0 30px;
+		}
+
+		#footer .button {
+			padding: 10px 20px;
+			font-family: mtSSemiBold;
+		}
+
+		#footer a {
+			text-decoration: none;
+			color: white;
+		}
+
+		#footer input {
+			border: 0;
+			border-bottom: 2px solid #72F5AA;
+			background-color: transparent;
+			padding: 5px;
+			color: white;
+		}
+
+		#footer .sojnutLogo {
+			width: 20%;
+			height: auto;
+			margin: 1% 12%;
+			float: right;
+		}
+
+		#footer ul.social {
+			width: 100%;
+		}
+
+		#footer ul.social li {
+			padding: 10px;
+		}
