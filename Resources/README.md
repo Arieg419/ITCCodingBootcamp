@@ -1,4 +1,4 @@
-# A collection of resources I have  aggregated for ITC students.
+# A collection of resources aggregated for ITC students.
 
 ## Found a great resource that isn't here?
 
