@@ -66,6 +66,7 @@
 	</style>
 </head>
 <body>
+
 	<h1 class="title">eBay (circa 1999)</h1>
 	<div>
 		<div class="product" id="prod1">
@@ -136,7 +137,6 @@
 	}
 
 	function addToCart(productName) {
-		alert(productName);
 		cart.push(productName);
 		localStorage.setItem("cart", JSON.stringify(cart));
 		console.log(localStorage.cart);
