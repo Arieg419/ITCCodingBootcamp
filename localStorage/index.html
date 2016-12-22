@@ -3,67 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		.product {
-			height: 300px;
-			width: 33%;
-			border:1px solid black;
-			border-radius: 5px;
-			display: inline-block;
-			vertical-align: top;
-			color: #fff;
-			text-align: center;
-		}
-
-		ul li {
-			list-style-type: none;
-		}
-
-		.title {
-			text-align: center;
-		}
-
-		#prod1 {
-			background-image: url("drone.gif");
-			background-size: cover;
-			background-repeat: no-repeat; 
-		}
-
-		#prod2 {
-			background-image: url("gopro.gif");
-			background-size: cover;
-			background-repeat: no-repeat; 
-		}
-
-		#prod3 {
-			background-image: url("beats.gif");
-			background-size: cover;
-			background-repeat: no-repeat; 
-		}
-
-
-		#cart {
-			display: block;
-			background-color: whitesmoke;
-			font-size: 1em;
-			border:1px solid salmon;
-			border-radius: 5px;
-			width: 33%;
-			margin-left: 33%;
-		}
-
-		#cart li {
-			color: black;
-			font-size: 1em;
-		}
-
-		.delete {
-			background-color: red;
-			color: #fff;
-			text-align: center !important;
-		}
-
-	</style>
+	<link rel="stylesheet" href="cart.css">
 </head>
 <body>
 
@@ -72,21 +12,21 @@
 		<div class="product" id="prod1">
 			<h2>DJI Phantom</h2>
 			<h3>Price: $ 300 </h3>
-			<button id="drone" onclick="addToCart(this.id)">
+			<button id="drone">
 				Add to Cart
 			</button>
 		</div>
 		<div class="product" id="prod2">
 			<h2>Go Pro 4</h2>
 			<h3>Price: $ 250</h3>
-			<button id="gopro" onclick="addToCart(this.id)">
+			<button id="gopro">
 				Add to Cart
 			</button>
 		</div>
 		<div class="product" id="prod3">
 			<h2>Beats Headphone</h2>
 			<h3>Price: $ 230</h3>
-			<button id="beats" onclick="addToCart(this.id)">
+			<button id="beats">
 				Add to Cart
 			</button>
 		</div>
@@ -99,51 +39,6 @@
 		</ul>
 	</div>
 
-	<script type="text/javascript">
-	var cart  = [];
-
-	function displayCart() {
-		if(localStorage.getItem("cart") !== null) {
-			cart = JSON.parse(localStorage.cart);
-		} else {
-			cart = [];
-		}
-
-		var cartDOM = document.getElementById("cart");
-		cartDOM.innerHTML = "";
-		for(var i = 0; i < cart.length; i++) {
-			console.log("printing cart", cart);
-		    var currItem = cart[i];
-		    var product = document.createElement("li");
-		    product.innerHTML = currItem;
-		    product.className = "title";
-			cartDOM.appendChild(product);
-		}
-
-		var deleteBtn = document.createElement("button");
-		deleteBtn.innerHTML = "Empty Cart";
-		deleteBtn.className = "delete";
-		deleteBtn.addEventListener("click", clearCart)
-
-
-		if(cart.length) {
-			cartDOM.appendChild(deleteBtn);
-		}
-	}
-
-	function clearCart() {
-		localStorage.clear();
-		displayCart();
-	}
-
-	function addToCart(productName) {
-		cart.push(productName);
-		localStorage.setItem("cart", JSON.stringify(cart));
-		console.log(localStorage.cart);
-		displayCart();
-	}
-
-	displayCart();
-	</script>
+	<script src="eBay.js" type="text/javascript"></script>
 </body>
 </html>

@@ -64,14 +64,19 @@
     e.target.classList.remove('playing');
   }
 
+  var ctr = 0;
+
   function playSound(e) {
-    console.log(e, e.keyCode);
+    console.log(e, e.keyCode, ctr);
+    ctr++;
+    console.log(ctr);
     //var audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     //var key = document.querySelector(`div[data-key="${e.keyCode}"]`);
 
     // The querySelector() method returns the first element that matches a specified CSS selector(s) in the document. 
     // Get the first <audio> element in the document that has a specific attribute:
     var audio = document.querySelector("audio[data-key='" + e.keyCode + "']");
+    
     // Grab relevant div to run transition animation
     var key = document.querySelector("div[data-key='" + e.keyCode + "']");
 
@@ -93,7 +98,28 @@
 
   //keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
+  // defining event listener
   document.addEventListener('keydown', playSound);
+
+
+  // Pure function doesn't care.
+  var func = function(a,b,c) {
+    this.a = "default";
+    this.b = "default";
+    this.c = "default";
+    var newFunction = function() {
+  };
+
+    console.log(func.a); // "default"
+
+    a = a ? "new" : this.a;
+    b = b ? "new" : this.b;
+    c = c ? "new" : this.c;
+
+    console.log(a,b,c);
+  };
+
+  func(one, two, three);
 </script>
 
 
