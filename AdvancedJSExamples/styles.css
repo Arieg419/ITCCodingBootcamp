@@ -1,0 +1,34 @@
+body {
+	text-align: center;
+}
+
+.d1 {
+	height: 400px;
+	width: 400px;
+	border: 1px solid green;
+	text-align: center;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.d2 {
+	height: 200px;
+	width: 200px;
+	border: 1px solid red;
+	text-align: center;
+	margin: auto;
+	margin-top: 80px;
+} 
+
+.d3 {
+	height: 100px;
+	width: 100px;
+	border: 1px solid purple;
+	text-align: center;
+	margin: auto;
+	margin-top: 30px;
+}
+
+a[href="http://example.com"] {
+  pointer-events: none;
+}
