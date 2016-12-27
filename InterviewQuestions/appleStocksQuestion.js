@@ -37,8 +37,7 @@ function getMaxProfit(arr) {
     return maxProfit;
 }
 
-// run your function through some test cases here
-// remember: debugging is half the battle!
+
 var arr1 = [10, 7, 5, 8, 11, 9, 1];
 var arr2 = [1];
 console.log(getMaxProfit(arr1));
