@@ -1,0 +1,24 @@
+#elements {
+	color: black;
+	background-color: green;
+	height: 800px;
+	width: 800px;
+}
+
+#one{
+	color: black;
+	height: 400px;
+	width: 400px;
+}
+
+.redClass {
+	background-color: red;
+}
+
+.greenClass {
+	background-color: green;
+}
+
+.yellowClass {
+	background-color: yellow;
+}
