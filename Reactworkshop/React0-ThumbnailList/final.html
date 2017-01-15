@@ -1,0 +1,118 @@
+<head>
+  <script src="https://unpkg.com/react@15/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="container">
+  </div>
+</body>
+
+<script type="text/babel">
+  var Badge = React.createClass({
+    render: function() {
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  });
+
+  var Thumbnail = React.createClass({
+    render: function() {
+      console.log("In thumbnail render...");
+      console.log(this.props);
+      return <div className="col-sm-6 col-md-4">
+        <div className="thumbnail">
+          <img src={this.props.imageUrl} alt="..."></img>
+          <div className="caption">
+            <h3>{this.props.header}</h3>
+            <p>{this.props.description}</p>
+            <p>
+              <Badge title={this.props.title} number={this.props.number} />
+            </p>
+          </div>
+        </div>
+      </div>
+    }
+  });
+
+  var ThumbnailList = React.createClass({
+    render: function() {
+      var list = this.props.thumbnailData.map(function(thumbnailProps){
+        return <Thumbnail {...thumbnailProps} />
+      });
+      console.log("Before Thumbnail list render");
+      console.log(list);
+      return ( 
+        <div>
+          {list}
+        </div>
+      );
+    }
+  });
+
+  var options = {
+    thumbnailData:  [{
+      title: 'Echo',
+      number: 12,
+      header: 'On sale',
+      description: 'IOT is here',
+      imageUrl: 'echo.jpg',
+      key: 1
+    },{
+      title: 'Google Home',
+      number: 25,
+      header: 'On sale',
+      description: 'Better than the echo',
+      imageUrl: 'google.jpeg',
+      key: 2
+    },{
+      title: 'Microsoft Shell',
+      number: 25,
+      header: 'On sale',
+      description: 'Better than the Google home',
+      imageUrl: 'microsoft.jpg',
+      key: 3
+    }]
+  };
+
+
+  ReactDOM.render(
+      <ThumbnailList thumbnailData={options.thumbnailData} />,
+      document.getElementById("container")
+  );
+</script>
+<script type="text/babel">
+  function add(a, b) {
+    return a + b;
+  }
+
+  console.log(add(3, 1, 4 , 3, 55)); // 4
+
+  var toAdd = [9, 5]
+  console.log(add(...toAdd));
+
+  var groupA = ['John', 'Jane'];
+  var groupB = ['Alicia'];
+  var final = [...groupB, 3, ...groupA];
+
+  console.log(final); // 
+
+  var person = ['Zuck', 25];
+  var personTwo = ['Dave', 29];
+
+  function greet(name, age) {
+    console.log('Hi ' + name + ', you are ' + age);
+  }
+
+  greet(...person);
+  greet(...personTwo);
+
+  var names = ['Mike', 'Ben'];
+  var final = ['Orr', ...names];
+
+  final.forEach(function (name) {
+    console.log('Hi ' + name);
+  });
+</script>

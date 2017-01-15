@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>First Component</title>
+	<script src="https://unpkg.com/react@15/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+</head>
+<body>
+	<div id="HelloMessage"></div>
+	<script type="text/babel">
+		var HelloMessage = React.createClass({
+			sayMessage: function() {
+				alert(this.props.children);
+			},
+			render: function() {
+				return <div>
+							<h3>Hello {this.props.word}!</h3>
+							<p>
+								<a href="#" onClick={this.sayMessage}>Click for a message</a>
+							</p>
+						</div>;
+			}
+		});
+
+		ReactDOM.render(
+			<HelloMessage word="bootcampers!">What are you doing now?</HelloMessage>,
+			document.getElementById('HelloMessage')
+		);
+	</script>
+</body>
+</html>
+	
+
+	<!-- 1st Example -->
+	<!-- <script type="text/babel">
+		var HelloMessage = React.createClass({
+			render: function() {
+				return <div>Hello world!</div>;
+			}
+		});
+
+		ReactDOM.render(
+			<HelloMessage />,
+			document.getElementById('HelloMessage')
+		);
+	</script> -->
+
+	<!-- 2nd Example -->	
+	<!-- <script type="text/babel">
+		var HelloMessage = React.createClass({
+			render: function() {
+				return <div>
+							<h3>Hello {this.props.word}!</h3>
+							<p>{this.props.children}</p>
+						</div>;
+			}
+		});
+
+		ReactDOM.render(
+			<HelloMessage word="bootcampers!">What are you doing now?</HelloMessage>,
+			document.getElementById('HelloMessage')
+		);
+	</script> -->

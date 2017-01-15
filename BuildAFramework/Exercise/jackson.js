@@ -41,7 +41,7 @@
 
 	// setter exists natively on Arrays and not on objects. Therefore, I create my own.
 	// setter exists in order to make changes to the DOM. We don't need the return values! This is a setter.
-	Jackson.prototype.setter = function (callback) {
+	Jackson.prototype.setter = function(callback) {
 		// Applying callback to all elements 
         for (var i = 0 ; i < this.length; i++) {
 	        callback(this[i]);
@@ -101,6 +101,10 @@
 	            el.setAttribute(attr, val);
 	        });
 	    } else { // getter
+	    	var ourCallback = function (el) {
+	            return el.getAttribute(attr);
+	        };
+
 	        return this.getOne(function (el) {
 	            return el.getAttribute(attr);
 	        });
@@ -115,8 +119,9 @@
     	*/
         createJacksonInstance: function (selector) { // built to handle arrays
 		    var els;
+		    // if user passes string, fetch from DOM
 		    if (typeof selector === "string") {
-		        els = document.querySelectorAll(selector);
+		        els = document.querySelectorAll(selector); // user already passed array of DOM elements
 		    } else if (selector.length) { // this means we have received a NodeList
 		        els = selector;
 		    } else { // Single DOM node.
@@ -126,7 +131,7 @@
 		}
 
     };
-     
+      
     global.jackson = global.$Jackson = jackson; // points to Greetr
 
 }(window));

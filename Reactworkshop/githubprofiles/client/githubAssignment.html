@@ -1,0 +1,144 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://fb.me/react-0.14.0.js"></script>
+	<script src="https://fb.me/react-dom-0.14.0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
+	<style>
+		body{margin-top:30px;}
+		.label{margin-right:10px;}
+		.repoItem{background:#f9f9f9;border: #f4f4f4 1px solid;padding:10px 10px;border-radius:5px;margin-bottom:10px;}
+		.form-control{width:450px !important; margin-right:10px;}
+		form{text-align: center;margin-bottom:35px;background:#f4f4f4; padding: 20px 10px;border-radius:10px;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div id="github-profiles"></div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/babel">
+		var Profile = React.createClass({
+			handleFormSubmit: function(username){
+				this.setState({username: username}, function(){
+					this.loadUserData();
+					this.loadRepoData();
+				});
+			},
+			getDefaultProps: function(){ // This is a React method.
+				return {
+					clientId: 'GITHUB CLIENTID',
+					clientSecret:'GITHUB CLIENT SECRET',
+					urls: {
+						user: 'https://api.github.com/users'
+					},
+					perPage:5
+				}
+			},
+			getInitialState: function(){ // This is a React method.
+				return {
+					// Fill in :)
+				}
+			},
+			loadUserData: function(){
+				$.ajax({
+					url: this.props.urls.user+'/'+this.state.username+'?client_id='+this.props.clientId+'&client_secret='+this.props.clientSecret,
+					dataType: 'json',
+					cache: false,
+					success: function(data){
+						this.setState({userData: data});
+					}.bind(this),
+					error: function(xhr, status, err){
+						this.setState({username: null});
+						alert(err);
+					}.bind(this)
+				});
+			},
+			loadRepoData: function(){
+				$.ajax({
+					url: this.props.urls.user+'/'+this.state.username+'/repos?per_page='+this.props.perPage+'&client_id='+this.props.clientId+'&client_secret='+this.props.clientSecret+'&sort=created',
+					dataType: 'json',
+					cache: false,
+					success: function(data){
+						//console.log(data);
+						this.setState({repoData: data});
+					}.bind(this),
+					error: function(xhr, status, err){
+						this.setState({username: null});
+						alert(err);
+					}.bind(this)
+				});
+			},
+			componentDidMount: function(){ // This is a React method.
+				this.loadUserData();
+				this.loadRepoData();
+			},
+			render: function(){ // This is a React method.
+				return(
+						<div>
+							Fill me in!
+						</div>
+					)
+			}
+		});
+
+		var UserInfo = React.createClass({
+			render: function() { // This is a React method 
+				return(
+						<h1> User Info should be filled in here </h1>
+					)
+			}
+		});
+
+		var Repos = React.createClass({
+			render: function(){
+				var repoNodes=this.props.repoData.map(function(repo, index){
+					return (
+							<Repo key={index} />
+						);
+				});
+				return(
+						<div>
+							<h2 className="page-header">Latest Repos</h2>
+							{repoNodes}
+						</div>
+					)
+			}
+		});
+
+		var Repo = React.createClass({
+			render: function(){
+				return(
+						<div>
+
+						</div>
+					)
+			}
+		});
+
+		var SearchForm = React.createClass({
+			submitForm: function(e){
+				e.preventDefault();
+			},
+			render: function(){
+				return(
+						<form>
+							
+						</form>
+					)
+			}
+		});
+
+		ReactDOM.render(
+				<Profile />,
+				document.getElementById('github-profiles')
+			);
+	</script>
+</body>
+</html>

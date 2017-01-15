@@ -1,0 +1,57 @@
+<head>
+  <script src="https://unpkg.com/react@15/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 target">
+
+      </div>
+    </div>
+  </div>
+</body>
+
+<script type="text/babel">
+  var Badge = React.createClass({
+    render: function() {
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  });
+
+  var Thumbnail = React.createClass({
+    render: function() {
+      return <div className="col-sm-6 col-md-4">
+        <div className="thumbnail">
+          <img src={this.props.imageUrl} alt="..."></img>
+          <div className="caption">
+            <h3>{this.props.header}</h3>
+            <p>{this.props.description}</p>
+            <p>
+              <Badge title={this.props.title} number={this.props.number} />
+            </p>
+          </div>
+        </div>
+      </div>
+    }
+  });
+
+
+  var options =  {
+    title: 'Echo',
+    description: 'IOT is here',
+    header: 'On sale',
+    number: 32,
+    imageUrl: "echo.jpg"
+  };
+
+  ReactDOM.render(
+      <Thumbnail title={options.title} number={options.number} header={options.header} description={options.description}
+                  imageUrl={options.imageUrl}/>,
+      document.querySelector('.target')
+  );
+</script>

@@ -1,0 +1,39 @@
+<head>
+  <script src="https://unpkg.com/react@15/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="container">
+  </div>
+</body>
+
+<script type="text/babel">
+  var Badge = React.createClass({
+    render: function() {
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  });
+
+  var Form = React.createClass({
+    render: function() {
+      return <div>
+                <Badge title={this.props.title} number={this.props.number}/>
+             </div>
+    }
+  });
+
+
+  var options =  {
+    title: 'Inbox',
+    number: 32
+  };
+
+  ReactDOM.render(
+      <Form title={options.title} number={options.number} />,
+      document.getElementById("container")
+  );
+</script>
