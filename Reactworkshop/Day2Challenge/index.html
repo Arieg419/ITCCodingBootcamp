@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+  var GreeterMessage = React.createClass({
+  render: function () {
+    var name = this.props.name;
+    var message = this.props.message;
+
+    return (
+      <div>
+        <h1>Hello {name}!</h1>
+        <p>{message}</p>
+      </div>
+    );
+  }
+  });
+
+  var GreeterForm = React.createClass({
+  onFormSubmit: function (e) {
+    // stopping page from refresh
+    e.preventDefault();
+
+    // declaring objec to use as this.setState param
+    var updates = {};
+
+    // grabbing data off of real DOM
+    var name = this.refs.name.value;
+    var message = this.refs.message.value;
+
+    // clean up form on enter
+    if (name.length > 0) {
+      this.refs.name.value = '';
+      updates.name = name;
+    }
+
+    // clean up
+    if (message.length > 0) {
+      this.refs.message.value = '';
+      updates.message = message;
+    }
+
+    this.props.onNewData(updates);
+  },
+  render: function () {
+    return (
+      <form onSubmit={this.onFormSubmit}>
+        <div>
+          <input type="text" ref="name" placeholder="Enter name"/>
+        </div>
+        <div>
+          <textarea ref="message" placeholder="Enter message"></textarea>
+        </div>
+        <div>
+          <button>Submit</button>
+        </div>
+      </form>
+    );
+  }
+  });
+
+  var Greeter = React.createClass({
+  getDefaultProps: function () {
+    return {
+      name: 'React',
+      message: 'This is the default message!'
+    };
+  },
+  getInitialState: function () {
+    return {
+        name: this.props.name,
+        message: this.props.message
+    };
+  },
+  handleNewData: function (updates) {
+    this.setState(updates);
+  },
+  render: function () {
+    var name = this.state.name;
+    var message = this.state.message;
+
+    return (
+      <div>
+        <GreeterMessage name={name} message={message}/>
+        <GreeterForm onNewData={this.handleNewData}/>
+      </div>
+    );
+  }
+  });
+
+  var firstName = 'James Bond';
+
+  ReactDOM.render(
+  <Greeter name={firstName}/>,
+  document.getElementById('app')
+  );
+
+  </script>
+
+</body>
+
+</html>
