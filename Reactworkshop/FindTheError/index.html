@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script data-require="jquery@2.1.3" data-semver="2.1.3" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  	<script src="https://fb.me/react-0.14.0.js"></script>
+  	<script src="https://fb.me/react-dom-0.14.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <h1>Understanding the React Component Lifecycle</h1>
+      <div id="app"></div>
+      <hr />
+      <button type="button" id="unmount" class="btn btn-danger">Unmount</button>
+      <hr />
+      <div id="screen"></div>
+    </div>
+    <script type="text/babel">
+    writeToScreen('Initial', 'primary');
+
+    var Welcome = React.createClass({
+      getInitialState: function() {
+        writeToScreen('GetInitialState', 'info'); // 'info is a bootstrap class, thats how we get the coloring on divs'
+        return {foo : 1};
+      },
+
+      getDefaultProps: function() {
+          writeToScreen('GetDefaultProps', 'info');
+          return {bar: 2};
+      },
+
+      update: function() {
+        writeToScreen('Updating State', 'primary');
+        this.setState({foo: 2});
+      },
+
+      render: function() {
+        writeToScreen('Render', 'success');
+        return (<div>
+          Welcome component - This.state.foo: {this.state.foo} <br />
+          Welcome component -  This.props.bar: {this.props.bar}
+          <br/>
+          <hr/>
+          <button className="btn btn-success"
+            onClick={this.update}>
+            Update State
+          </button>
+        </div>);
+      },
+
+      componentWillMount: function() {
+        writeToScreen('ComponentWillMount', 'warning');
+      },
+
+      componentDidMount: function() {
+        writeToScreen('ComponentDidMount', 'warning');
+      },
+
+      shouldComponentUpdate: function() {
+        writeToScreen('ShouldComponentUpdate', 'info');
+        return true; // show what happens when you change to false
+      },
+
+      componentWillReceiveProps: function(nextProps) {
+        writeToScreen('ComponentWillRecieveProps', 'warning');
+      },
+
+      componentWillUpdate: function() {
+        writeToScreen('ComponentWillUpdate', 'warning');
+      },
+
+      componentDidUpdate: function() {
+        writeToScreen('ComponentDidUpdate', 'warning');
+      },
+
+      componentWillUnmount: function() {
+        writeToScreen('componentWillUnmount', 'danger');
+      }
+    });
+
+    var App = React.createClass({
+      getInitialState: function() {
+          return {id: 1};
+      },
+
+      update: function() {
+         writeToScreen('Updating Props', 'primary');
+         this.setState({id: 2});
+      },
+
+      render: function() {
+        return (
+          <div>
+          <hr/>
+          <Welcome bar={this.state.id} />
+          <hr />
+          <button type="button" className="btn btn-primary"
+            onClick={this.update}>
+            Update Props
+          </button>
+      </div>
+    );
+      }
+    });
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    );
+
+    var unmountBtn = document.getElementById('unmount');
+    unmountBtn.addEventListener('click', unmount);
+
+    function unmount() {
+      writeToScreen('Unmounting', 'primary');
+      React.unmountComponentAtNode(document.getElementById('app'));
+      unmountBtn.remove();
+    }
+
+    function writeToScreen(msg, level) {
+        var elem = document.getElementById('screen');
+        elem.innerHTML += '<div class="log bg-' + level + '">' +
+        '<span class="glyphicon glyphicon-ok"></span> &nbsp;&nbsp;' +
+          msg +
+        '</div>';
+    }
+
+    </script>
+  </body>
+
+</html>
