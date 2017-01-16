@@ -33,9 +33,11 @@ Rather than using a for loop, refactor the code below to instead use the forEach
 */
 
 
+function savePost(post) {
+  console.log(post)
+};
 
 function handlePosts() {
-   function savePost(post) {console.log(post)};
     var posts = [
       { id: 23, title: 'Daily JS News' },
       { id: 52, title: 'Code Refactor City' },
