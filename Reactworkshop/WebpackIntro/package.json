@@ -1,0 +1,20 @@
+{
+  "name": "webpackintro",
+  "version": "1.0.0",
+  "description": "Our first modular react app with webpack",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "webpack": "^1.13.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omer Goldberg",
+  "license": "ISC"
+}
