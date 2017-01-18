@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+  console.log("running for surez");
+		var add = function(a,b) {
+			return a + b;
+		};
+
+    console.log("Normal funciton");
+		console.log(add(1,2));
+
+		add = (a,b) => {
+			return a + b; // single js expression
+		};
+
+    console.log("fat arrow function...");
+    console.log(add(4,5));
+
+		add = (a,b) => {
+			var sum = 0
+			return a + b; // two js expressions
+		};
+
+    console.log("arrow function with two expressions");
+		add(1,2);
+
+    console.log("arrow funcs with one expression");
+    // this works b/c it is only one expression. this is called an "implicit return" of the function
+		add = (a,b) => a + b;
+
+		// one expression means we don't need curly braces
+		var double = function(number) {
+			return 2 * number;
+		};
+
+		double(8);
+
+		double = (number) => {
+			return 2 * number;
+		};
+
+		double(4);
+
+		// b/c single arg
+		double = (number) => 2 * number
+		double(2);
+
+		// so if i have one arg, i can drop parenthesis, no semicolon!
+		double = number => 2 * number
+		double(6);
+
+    // use case of arrow function
+    var numbers =[1,2,3];
+
+    var res = numbers.map(function(number) {
+      return 2 * number;
+    });
+    console.log("mapping with function syntax", res);
+
+    // drop off as many chars as possible!
+    res = numbers.map((number) => {
+      return 2 * number;
+    });
+    console.log("mapping with arrow syntax", res);
+
+    // it is one expression so we can still do better
+    res = numbers.map(number => 2 * number);
+    console.log("mapping with arrow, no parenthesis", res);
+
+    // when to use arrow functions? always?
+    // compact syntax is nice :) is that all?
+
+    var team = {
+      members: ['Jane', 'Bill'],
+      teamName: 'ma squad',
+      summary: function() {
+        // this.team
+        return this.members.map(function(member) {
+          return member + "is on team " + this.teamName;
+        });
+      }
+    };
+
+    //team.summary(); // team.teamSummary is not a function. what is 'this' in the context
+    // when we run an iterator function, the value of this is coming back undefined.
+    // whenever we pass an interator function, the value of this is lost :(
+    //how do we solve this?! we could use .bind() in es5.
+
+    team = {
+      members: ['Jane', 'Bill'],
+      teamName: 'ma squad',
+      summary: function() {
+        return this.members.map((member) => {
+          return member + "is on team " + this.teamName;
+        });
+      }
+    };
+
+    console.log(team.summary());
+
+    // in short, arrow functions make 'this' behave how we would expect it to
+
+    var fibonacci = function(n) {
+      if (n < 3) return 1;
+      return fibonacci(n - 1) + fibonacci(n - 2);
+    };
+
+    console.log("reg fib");
+    console.log(fibonacci(6));
+
+    fibonacci = (n) => {
+      if (n < 3) return 1;
+      return fibonacci(n - 1) + fibonacci(n - 2);
+    };
+
+    console.log("new fib");
+    console.log(fibonacci(6));
+
+  </script>
+</body>
+
+</html>
